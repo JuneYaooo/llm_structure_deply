@@ -7,14 +7,14 @@ docker images
 
 # docker tag d14f2969dbb1 june666666/llm_structure_env:structure_20240730
 
-docker push june666666/llm_structure_env:sh build.sh -t structure_20240730
+docker push june666666/llm_structure_env:structure_20240730
 
 #code
-sh build.sh -t sh build.sh -t structure_20240730
+sh build.sh -t structure_20240730
 
 docker images
 
-docker tag db180aedc134 june666666/llm_structure_code:sh build.sh -t structure_20240730
+docker tag db180aedc134 june666666/llm_structure_code:structure_20240730
 
 docker push june666666/llm_structure_code:structure_20240730
 
