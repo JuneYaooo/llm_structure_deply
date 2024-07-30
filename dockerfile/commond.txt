@@ -20,7 +20,7 @@ docker push june666666/llm_structure_code:structure_20240730
 
 # 生产环境
 docker pull june666666/llm_structure_code:structure_20240730
-docker run -itd --gpus=all -e NVIDIA_DRIVER_CAPABILITIES=compute,utility -e NVIDIA_VISIBLE_DEVICES=all -v /nvme/yaoyujun/github/structure-tool-glm/eval.py:/code/eval.py -v /nvme/yaoyujun/github/structure-tool-glm/config:/code/config -v /nvme/yaoyujun/github/structure-tool-glm/model:/code/model -v /nvme/yaoyujun/github/structure-tool-glm/lora:/code/lora --name structure_transformer_code -p 46000:46000 june666666/structure_transformer_code:structure_20230509
+docker run -itd --gpus=all -e NVIDIA_DRIVER_CAPABILITIES=compute,utility -e NVIDIA_VISIBLE_DEVICES=all -v /zy/config:/code/config -v /zy/models:/code/models -v /zy/finetune:/code/finetune --name llm_structure_code -p 46000:46000 june666666/llm_structure_code:structure_20240730
 sudo docker ps -a
 
 容器设置异常退出自动重启
