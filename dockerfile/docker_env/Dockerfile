@@ -13,12 +13,10 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138 \
 
 # 更新并安装软件包
 RUN apt-get update --fix-missing && \
-    apt-get install -y wget bzip2 ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 git mercurial subversion && \
-    apt-get clean
-
-RUN apt-get update && \
-    apt-get install -y libc6-dev g++ && \
-    apt-get clean
+    apt-get install -y wget bzip2 ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 git mercurial subversion \
+                       libc6-dev g++ build-essential libgl1-mesa-glx && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # 下载并安装Miniconda
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
@@ -57,19 +55,16 @@ deb http://archive.debian.org/debian buster-backports main contrib non-free\n\
 deb http://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free'\
 > /etc/apt/sources.list
 
-
-RUN apt-get --allow-releaseinfo-change update && apt-get update -y \ 
- && apt-get install -y libc6-dev g++ \ 
- && apt-get install -y build-essential libgl1-mesa-glx \ 
- && rm -rf /var/lib/apt/lists/*
-
+RUN apt-get --allow-releaseinfo-change update && apt-get update -y \
+    && apt-get install -y libc6-dev g++ build-essential libgl1-mesa-glx \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY environment.yaml ./
 
-RUN  conda env create -f ./environment.yaml && conda clean --tarballs -y
+RUN conda env create -f ./environment.yaml && conda clean --tarballs -y
+RUN pip install torch==2.3.0 torchvision==0.18.0 torchaudio==2.3.0 --index-url https://download.pytorch.org/whl/cu118
 
-# # 设置CUDA_HOME环境变量
+# 设置CUDA_HOME环境变量
 ENV CUDA_HOME /usr/local/cuda
-
 
 ARG TORCH_CUDA_ARCH_LIST="3.5;5.0;6.0;6.1;7.0;7.5;8.0;8.6+PTX"
