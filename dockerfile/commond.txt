@@ -1,0 +1,43 @@
+docker login(如果未登录的话)
+
+#env
+sh build.sh -t structure_20240730
+
+docker images
+
+# docker tag d14f2969dbb1 june666666/llm_structure_env:structure_20240730
+
+docker push june666666/llm_structure_env:sh build.sh -t structure_20240730
+
+#code
+sh build.sh -t sh build.sh -t structure_20240730
+
+docker images
+
+docker tag db180aedc134 june666666/llm_structure_code:sh build.sh -t structure_20240730
+
+docker push june666666/llm_structure_code:structure_20240730
+
+# 生产环境
+docker pull june666666/llm_structure_code:structure_20240730
+docker run -itd --gpus=all -e NVIDIA_DRIVER_CAPABILITIES=compute,utility -e NVIDIA_VISIBLE_DEVICES=all -v /nvme/yaoyujun/github/structure-tool-glm/eval.py:/code/eval.py -v /nvme/yaoyujun/github/structure-tool-glm/config:/code/config -v /nvme/yaoyujun/github/structure-tool-glm/model:/code/model -v /nvme/yaoyujun/github/structure-tool-glm/lora:/code/lora --name structure_transformer_code -p 46000:46000 june666666/structure_transformer_code:structure_20230509
+sudo docker ps -a
+
+容器设置异常退出自动重启
+docker update --restart=on-failure 3b6fda937cf7
+
+
+
+#code -不开启API的环境
+sh build.sh -t structure_20230508
+
+docker images
+
+docker tag aa5796373bc6 june666666/structure_transformer_code:structure_20230508
+
+docker push june666666/structure_transformer_code:structure_20230508
+
+# 生产环境
+docker pull june666666/structure_transformer_code:structure_20230508
+docker run -it --gpus=all -e NVIDIA_DRIVER_CAPABILITIES=compute,utility -e NVIDIA_VISIBLE_DEVICES=all -v /nvme/yaoyujun/github/structure-tool-glm/eval.py:/code/eval.py -v /nvme/yaoyujun/github/structure-tool-glm/config:/code/config -v /nvme/yaoyujun/github/structure-tool-glm/model:/code/model -v /nvme/yaoyujun/github/structure-tool-glm/lora:/code/lora --name structure_transformer_code -p 46000:46000 june666666/structure_transformer_code:structure_20230508 /bin/bash
+sudo docker ps -a
