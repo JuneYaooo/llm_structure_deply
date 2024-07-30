@@ -1,4 +1,4 @@
-FROM june666666/llm_structure_env:structure_20240729
+FROM june666666/llm_structure_env:structure_20240730
 
 WORKDIR /code
 COPY ./tmp/code/*.py /code/
