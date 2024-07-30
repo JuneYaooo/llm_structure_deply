@@ -53,7 +53,7 @@ custom_channels:\n\
 
 RUN echo 'deb http://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free\n\
 deb http://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free\n\
-deb http://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free\n\
+deb http://archive.debian.org/debian buster-backports main contrib non-free\n\
 deb http://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free'\
 > /etc/apt/sources.list
 
