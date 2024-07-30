@@ -14,11 +14,11 @@ dependencies:
   - python=3.10.12
   - pip
   - openssl
-  - readline=8.2=h5eee18b_0
-  - setuptools=68.0.0=py39h06a4308_0
-  - sqlite=3.41.2=h5eee18b_0
-  - tk=8.6.12=h1ccaba5_0
-  - wheel=0.41.2=py39h06a4308_0
+  - readline
+  - setuptools
+  - sqlite
+  - tk=
+  - wheel
   - xz
   - zlib=1.2.13=h5eee18b_0
   - pip:
