@@ -29,7 +29,7 @@ cp -r ${ROOT_DIR}/src ${CUR_DIR}/tmp/code/
 cp -r ${ROOT_DIR}/utils ${CUR_DIR}/tmp/code/
 cp -r ${ROOT_DIR}/log ${CUR_DIR}/tmp/code/
 
-docker build --tag ${IMAGE_URL} ${CUR_DIR}
+docker build --no-cache --tag ${IMAGE_URL} ${CUR_DIR}
 
 rm -rf ${CUR_DIR}/tmp
 

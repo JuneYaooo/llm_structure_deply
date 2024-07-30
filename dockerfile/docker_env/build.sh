@@ -15,4 +15,4 @@ done
 IMAGE_URL=${IMAGE}:${TAG}
 CUR_DIR=$(cd `dirname $0` && pwd -P)
 
-docker build --network=host --tag ${IMAGE_URL} ${CUR_DIR}
+docker build --network=host --no-cache --tag ${IMAGE_URL} ${CUR_DIR}
